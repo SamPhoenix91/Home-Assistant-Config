@@ -1,0 +1,12 @@
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# HTTP
+http:
+  base_url: !secret HAURL
+  use_x_forwarded_for: true
+  trusted_proxies: 192.168.1.5
+
+# Integrations
+homeassistant:
+  packages: !include ./Configuration/Components.yaml 

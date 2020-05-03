@@ -1,0 +1,32 @@
+- id: '1586896047752'
+  name: Simulated Home On
+  entities:
+    light.living_room_lamp:
+      friendly_name: Living Room Lamp
+      state: 'on'
+      supported_features: 0
+    light.office_light:
+      assumed_state: true
+      effect_list:
+      - colorloop
+      - night
+      - white
+      friendly_name: Office Light
+      state: 'on'
+      supported_features: 61
+- id: '1586896116503'
+  name: Simulated Home Off
+  entities:
+    light.living_room_lamp:
+      friendly_name: Living Room Lamp
+      state: 'off'
+      supported_features: 0
+    light.office_light:
+      assumed_state: true
+      effect_list:
+      - colorloop
+      - night
+      - white
+      friendly_name: Office Light
+      state: 'off'
+      supported_features: 61

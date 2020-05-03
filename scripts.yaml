@@ -1,0 +1,67 @@
+a8_safe_power_down:
+  alias: A8 Safe Power Down
+  sequence:
+  - condition: state
+    entity_id: binary_sensor.a8_printer_printing
+    state: 'off'
+  - service: rest_command.octoprint_shutdown
+  - delay:
+      seconds: 20
+  - entity_id: switch.a8_hard_power
+    service: switch.turn_off
+a8_preheat_pla:
+  alias: A8 Preheat PLA
+  sequence:
+  - condition: state
+    entity_id: sensor.a8_printer_current_state
+    state: Operational
+  - data:
+      temp: 50
+    service: rest_command.octoprint_bed_temp
+  - data:
+      temp: 185
+    service: rest_command.octoprint_nozzle_temp
+
+kitchenwledrainbow:
+  alias: KitchenWLED Rainbow
+  sequence:
+  - data:
+      effect: Pride 2015
+    entity_id: light.kitchen_wled
+    service: light.turn_on
+kitchenwledwhite:
+  alias: KitchenWLED White
+  sequence:
+  - data:
+      effect: Solid
+    entity_id: light.kitchen_wled
+    service: light.turn_on
+kitchenwledtwinkle:
+  alias: KitchenWLED Colortwinkles
+  sequence:
+  - data:
+      effect: Colortwinkles
+    entity_id: light.kitchen_wled
+    service: light.turn_on
+
+officewledrainbow:
+  alias: OfficeWLED Rainbow
+  sequence:
+  - data:
+      effect: Pride 2015
+    entity_id: light.office_wled
+    service: light.turn_on
+officewledwhite:
+  alias: OfficeWLED White
+  sequence:
+  - data:
+      effect: Solid
+    entity_id: light.office_wled
+    service: light.turn_on
+officewledtwinkle:
+  alias: OfficeWLED Colortwinkles
+  sequence:
+  - data:
+      effect: Colortwinkles
+    entity_id: light.office_wled
+    service: light.turn_on

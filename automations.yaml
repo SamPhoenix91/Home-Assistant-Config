@@ -1,0 +1,11 @@
+- id: '1587243611320'
+  alias: Set default theme at startup
+  description: ''
+  trigger:
+  - event: start
+    platform: homeassistant
+  condition: []
+  action:
+  - data:
+      name: ios-dark-mode
+    service: frontend.set_theme

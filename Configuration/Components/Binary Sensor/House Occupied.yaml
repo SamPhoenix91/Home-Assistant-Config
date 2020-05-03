@@ -1,0 +1,11 @@
+platform: template
+sensors:
+  house_occupied:
+    value_template: "{{ is_state('input_boolean.house_occupied', 'on') }}"
+    device_class: "occupancy"
+    icon_template: >-
+      {% if is_state("binary_sensor.house_occupied", "on") %}
+        mdi:home
+      {% else %}
+        mdi:home-outline
+      {% endif %}

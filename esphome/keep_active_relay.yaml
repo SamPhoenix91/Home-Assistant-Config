@@ -1,0 +1,49 @@
+esphome:
+  name: Keep Alive
+  platform: ESP8266
+  board: nodemcuv2
+ 
+wifi:
+  ssid: [WiFi SSID]
+  password: [WiFi Pass]
+ 
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Keep Alive Fallback Hotspot"
+    password: [fallback password]
+ 
+# Enable Home Assistant API
+api:
+  password: [api pass]
+ 
+ota:
+  password: [ota pass]
+ 
+captive_portal:
+# Enable logging
+logger:
+switch:
+#Keep Alive Switch
+  - platform: gpio
+    name: "Keep Alive"
+    pin: D0
+    id: keepAliveSwitch
+    #Automation
+    on_turn_on:
+      - delay: 30s
+      - switch.turn_off: keepAliveSwitch
+    on_turn_off:
+      - delay: 30s
+      - if:
+          condition:
+            switch.is_off: keepAliveSwitch
+          then:
+          - switch.turn_off: stateSwitch
+#Main GPIO Switch
+  - platform: gpio
+    name: "Fire Switch"
+    pin: D5
+    id: stateSwitch
+    #Automation
+    on_turn_on:
+      - switch.turn_on: keepAliveSwitch

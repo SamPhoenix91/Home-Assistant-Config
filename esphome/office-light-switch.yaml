@@ -1,0 +1,61 @@
+esphome:
+  name: office_light_switch
+  platform: ESP8266
+  board: esp8285
+
+# Enable Home Assistant API
+api:
+  password: !secret esp_home_api_ota
+
+ota:
+  password: !secret esp_home_api_ota
+
+captive_portal:
+
+# Enable logging
+logger:
+
+wifi:
+  ssid: !secret WifiSSID
+  password: !secret WifiPass
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Office-Light-Switch"
+    password: "K0bW9L5NGm65"
+
+status_led:
+  pin:
+    number: GPIO13
+    inverted: true
+
+binary_sensor:
+  - platform: gpio
+    pin: GPIO00
+    id: reset
+    internal: true
+    filters:
+      - invert:
+      - delayed_off: 10ms
+    on_press:
+      - homeassistant.service:
+          service: light.toggle
+          data: 
+            entity_id: light.office_light
+  - platform: gpio
+    pin:
+      number: GPIO4
+      mode: INPUT_PULLUP
+      inverted: True
+    internal: true
+    name: "Light Switch"
+    on_press:
+      - homeassistant.service:
+          service: light.toggle
+          data: 
+            entity_id: light.office_light
+    on_release:
+      - homeassistant.service:
+          service: light.toggle
+          data: 
+            entity_id: light.office_light

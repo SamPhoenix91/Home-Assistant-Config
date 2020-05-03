@@ -1,0 +1,56 @@
+esphome:
+  name: serversensor
+  platform: ESP8266
+  board: nodemcuv2
+
+# Enable Home Assistant API
+api:
+  password: !secret esp_home_api_ota
+
+ota:
+  password: !secret esp_home_api_ota
+
+captive_portal:
+
+# Enable logging
+logger:
+
+wifi:
+  ssid: !secret WifiSSID
+  password: !secret WifiPass
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Serversensor Fallback Hotspot"
+    password: "ho99Wvi0YyYZ"
+
+
+
+sensor:
+  - platform: dht
+    pin: D1
+    id: tempSensor
+    temperature: 
+      name: Server Cupboard Temperature
+      on_value_range:
+        - above: 22.0
+          then:
+            - switch.turn_on: fans
+        - below: 30.0
+          then:
+            - switch.turn_off: fans
+    humidity:
+      name: Server Cupboard Humidity
+    update_interval: 10s
+    model: DHT22
+    
+
+switch:
+  - platform: gpio
+    id: fans
+    name: "Fans"
+    pin: 
+      number: D2
+      inverted: yes
+
+ 

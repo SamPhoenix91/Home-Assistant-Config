@@ -1,0 +1,10 @@
+platform: sonarr
+api_key: !secret SonarrKey
+host: 192.168.0.5
+port: 8989
+monitored_conditions:
+  - upcoming
+  - series
+  - wanted
+  - queue
+days: 10

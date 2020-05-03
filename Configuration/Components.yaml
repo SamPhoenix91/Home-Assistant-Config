@@ -1,0 +1,44 @@
+#Package Disctionary linking Config files
+
+
+components:
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+# INTEGRATION FILES
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+  #Integration folders
+  climate: !include_dir_list ./Components/Thermostat/
+  camera:  !include_dir_list ./Components/Camera/
+  binary_sensor: !include_dir_list ./Components/Binary Sensor/
+  fan: !include_dir_list ./Components/Fan/
+  sensor: !include_dir_list ./Components/Sensor/
+  light: !include_dir_list ./Components/Light/
+  media_player: !include_dir_list ./Components/Media Player/
+  switch: !include_dir_list ./Components/Switch/
+  rest_command: !include_dir_merge_named ./Components/Rest Command/
+  notify: !include_dir_list ./Components/Notify/
+
+  #Integration files
+  proximity: !include ./Components/Other/proximity.yaml
+  alarm_control_panel: !include ./Components/Other/alarm.yaml
+  garbage_collection: !include ./Components/Other/bins.yaml
+  octoprint: !include ./Components/Other/octoprint.yaml
+  google: !include ./Components/Other/Google.yaml
+  spotify: !include ./Components/Other/Spotify.yaml
+  browser_mod:
+  proxmoxve: !include ./Components/Other/Proxmox.yaml
+  homekit: !include ./Components/Other/Homekit.yaml
+
+  # Text to speech
+  tts:
+    - platform: google_translate
+
+  # --------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+  # HA FILES
+  # --------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+  group: !include_dir_named  ./Groups/
+  automation: !include ../automations.yaml
+  script: !include ../scripts.yaml
+  scene: !include ../scenes.yaml
+  panel_iframe: !include ../iframe.yaml
+  frontend:
+    themes: !include_dir_merge_named ../themes/

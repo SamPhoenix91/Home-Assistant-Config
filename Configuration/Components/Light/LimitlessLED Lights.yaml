@@ -1,0 +1,16 @@
+platform: limitlessled
+bridges:
+    - host: !secret MilightBridgeIP
+      groups:
+      - number: 1
+        name: "Office Light"
+        type: rgbw
+      - number: 2
+        name: "Hallway Light"
+        type: rgbw
+      - number: 3
+        name: "Porch Light"
+        type: rgbw
+      - number: 1
+        name: Bridge
+        type: bridge-led

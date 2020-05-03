@@ -1,0 +1,12 @@
+- host: !secret ProxmoxHost
+  username: !secret ProxmoxUser
+  password: !secret ProxmoxPass
+  verify_ssl: false
+  nodes:
+  - node: proxmox
+    vms:
+    - 100
+    - 104
+    containers:
+    - 101
+    - 103

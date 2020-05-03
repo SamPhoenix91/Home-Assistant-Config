@@ -1,0 +1,25 @@
+# Example .gitignore file for your config dir.
+# Ignore root files and directories
+/*
+/*/
+
+# You can whitelist files/folders with !, these will not be ignored.
+#File Whitelist
+!*.yaml
+!.gitignore
+
+
+#Folder Whitelist
+!/Configuration/
+!/custom_components/
+!/esphome/
+!/themes/
+
+#Allow Custom Components folder but not details
+!custom_components/*/
+/custom_components/*/*
+
+# Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
+ip_bans.yaml
+secrets.yaml
+known_devices.yaml

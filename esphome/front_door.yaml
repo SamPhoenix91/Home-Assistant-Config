@@ -1,0 +1,161 @@
+esphome:
+  name: front_door
+  platform: ESP8266
+  board: nodemcuv2
+
+wifi:
+  ssid: !secret WifiSSID
+  password: !secret WifiPass
+  
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Front Door Fallback Hotspot"
+    password: "d0ql90kKs4wE"
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: !secret esp_home_api_ota
+
+ota:
+  password: !secret esp_home_api_ota
+
+binary_sensor:
+  - platform: gpio
+    name: "Doorbell"
+    pin: D0
+    filters:
+      - delayed_off: 100ms
+  - platform: gpio
+    name: "Front Door"
+    pin: 
+      number: D1
+      mode: INPUT_PULLUP
+    device_class: door
+
+
+output:
+  - platform: gpio
+    pin: D2
+    id: light_1
+
+light:
+  - platform: binary
+    name: "Security Light"
+    id: security_light
+    output: light_1
+  - platform: fastled_clockless
+    chipset: WS2811
+    pin: D5
+    num_leds: 42
+    rgb_order: GRB
+    name: "Door Light"
+    effects:
+      - addressable_color_wipe:
+          name: Alarm Timer Arming
+          colors:
+            - red: 50%
+              green: 39%
+              blue: 7%
+              num_leds: 42
+          add_led_interval: 700ms
+          reverse: false
+      - addressable_color_wipe:
+          name: Alarm Timer Triggering
+          colors:
+            - red: 50%
+              green: 17%
+              blue: 7%
+              num_leds: 42
+          add_led_interval: 700ms
+          reverse: false
+      - strobe:
+          name: Red Alert
+          colors:
+            - state: True
+              brightness: 50%
+              red: 100%
+              green: 0%
+              blue: 0%
+              duration: 500ms
+            - state: False
+              brightness: 100%
+              red: 0%
+              green: 0%
+              blue: 0%
+              duration: 500ms
+      - addressable_lambda:
+          name: Alarm Trigger
+          update_interval: 100ms
+          lambda: |-
+            static uint8_t gCurrentPatternNumber = 0; // Index number of which pattern is current
+            static uint8_t gHue = 0; // rotating "base color" used by many of the patterns
+            
+            static unsigned long nChangeHue = millis();
+            if (millis() > nChangeHue) {
+              nChangeHue += 2;
+              gHue++;
+            }
+            
+            static unsigned long nChangePattern = millis();
+            if (millis() > nChangePattern) {
+              nChangePattern += 100; // Every 1/10 second
+              gCurrentPatternNumber = (gCurrentPatternNumber + 1) % 2;
+            }
+            
+            
+            for (int i = it.size() - 1; i > 0; i--) {
+              it[i] = it[i - 1].get();
+            }
+            
+            switch(gCurrentPatternNumber) {
+              case 0: {
+                it[0] = ESPColor(255,0,0);
+                break;
+              }
+              case 1: {
+                it[0] = ESPColor(0,0,255);
+                break;
+              }
+              default: {
+                break;
+              }
+            }
+      - addressable_lambda:
+          name: Christmas Lights
+          update_interval: 50ms
+          lambda: |-
+            static uint8_t iColour = 0; // Index number of color
+            static uint8_t iColourMax = 3; //Index numbr of max colours
+            
+            iColour = iColour + 1;
+            if (iColour > iColourMax)
+            {
+              iColour = 0;
+            }
+            
+            switch(iColour)
+            {
+              case 0: {
+                it[0] = ESPColor(255,0,0);
+              }
+              case 1: {
+                it[0] = ESPColor(0,255,0);
+              }
+              case 2: {
+                it[0] = ESPColor(0,0,0);
+              }
+              case 3: {
+                it[0] = ESPColor(255,255,255);
+              }
+            }
+            
+            
+            for (int i = it.size() - 1; i > 0; i--) {
+              it[i] = it[i - 1].get();
+            }
+            

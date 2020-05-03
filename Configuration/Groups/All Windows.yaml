@@ -1,0 +1,5 @@
+name: All Windows
+entities:
+  - binary_sensor.office_window
+  - binary_sensor.sam_bedroom_window
+  - binary_sensor.lisa_bedroom_window

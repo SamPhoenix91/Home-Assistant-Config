@@ -1,0 +1,14 @@
+media:
+  title: Media
+  url: !secret MediaServerURL
+  icon: mdi:plex
+
+servercontrol:
+  title: Server Control
+  url: !secret ServerControlURL
+  icon: mdi:server
+
+octoprint:
+  title: Octoprint
+  url: !secret octoprintURL
+  icon: mdi:printer-3d

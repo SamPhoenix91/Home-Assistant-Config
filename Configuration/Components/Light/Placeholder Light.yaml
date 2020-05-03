@@ -1,0 +1,3 @@
+platform: mqtt
+name: "PlaceholderLight"
+command_topic: "PLACEHOLDER"

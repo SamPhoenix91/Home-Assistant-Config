@@ -1,0 +1,17 @@
+host: !secret octoprinthost
+port: 1026
+name: 3D Printer
+api_key: !secret octoprintAPIKey
+bed: true
+number_of_tools: 1
+sensors:
+  monitored_conditions:
+  - 'Current State'
+  - 'Temperatures'
+  - 'Job Percentage'
+  - 'Time Elapsed'
+  - 'Time Remaining'
+binary_sensors:
+  monitored_conditions:
+  - Printing
+  - Printing Error

@@ -1,0 +1,2 @@
+client_id: !secret GoogleID
+client_secret: !secret GoogleSecret

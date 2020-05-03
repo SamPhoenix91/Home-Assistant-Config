@@ -1,0 +1,5 @@
+platform: androidtv
+host: !secret FireTVStickIP
+name: Sam Fire TV Stick
+adb_server_ip: '127.0.0.1'
+device_class: firetv

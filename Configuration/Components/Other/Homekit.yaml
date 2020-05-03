@@ -1,0 +1,16 @@
+filter:
+    include_domains:
+      - climate
+      - light
+      - fan
+      - light
+      - alarm_control_panel
+    exclude_entities:
+      - light.security_light
+      - light.placeholderlight
+    include_entities:
+      - input_boolean.lisa_home
+      - input_boolean.sam_home
+entity_config:
+  alarm_control_panel.home_alarm:
+    code: !secret alarm_code

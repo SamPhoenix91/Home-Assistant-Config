@@ -1,0 +1,7 @@
+platform: mqtt
+name: "Garden Light"
+command_topic: "cmnd/GardenLight/power"
+state_topic: "stat/GardenLight/POWER"
+qos: 1
+payload_on: "ON"
+payload_off: "OFF"

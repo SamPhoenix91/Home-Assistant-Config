@@ -1,0 +1,5 @@
+platform: waze_travel_time
+origin:  zone.home
+destination: zone.lisa_work
+region: EU
+realtime: true

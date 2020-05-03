@@ -1,0 +1,26 @@
+  sam_home:
+    zone: home
+    ignored_zones:
+    #   - 
+    devices:
+      - person.sam
+    tolerance: 50
+    unit_of_measurement: mi
+
+  lisa_home:
+    zone: home
+    ignored_zones:
+    #   - 
+    devices:
+      - person.lisa
+    tolerance: 50
+    unit_of_measurement: mi
+
+  sam_house:
+    zone: house
+    ignored_zones:
+    #   - 
+    devices:
+      - person.sam
+    tolerance: 50
+    unit_of_measurement: mi

@@ -1,0 +1,5 @@
+platform: mqtt
+command_topic: "cmnd/Plug1/POWER"
+state_topic: "stat/Plug1/POWER"
+name: A8 Hard Power
+icon: mdi:printer-3d

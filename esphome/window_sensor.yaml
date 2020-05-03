@@ -1,0 +1,45 @@
+esphome:
+  name: window_sensor
+  platform: ESP8266
+  board: nodemcuv2
+
+wifi:
+  ssid: !secret WifiSSID
+  password: !secret WifiPass
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Window Sensor Fallback Hotspot"
+    password: "F3yqguST7o4m"
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: !secret esp_home_api_ota
+
+ota:
+  password: !secret esp_home_api_ota
+
+binary_sensor:
+  - platform: gpio
+    pin: 
+      number: D1
+      mode: INPUT_PULLUP
+    name: "Sam Bedroom Window"
+    device_class: window
+  - platform: gpio
+    pin: 
+      number: D2
+      mode: INPUT_PULLUP
+    name: "Lisa Bedroom Window"
+    device_class: window
+  - platform: gpio
+    pin: 
+      number: D6
+      mode: INPUT_PULLUP
+    name: "Office Window"
+    device_class: window
