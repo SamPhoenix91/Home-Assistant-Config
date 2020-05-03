@@ -15,9 +15,6 @@
 !/esphome/
 !/themes/
 
-#Allow Custom Components folder but not details
-!custom_components/*/
-/custom_components/*/*
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml
