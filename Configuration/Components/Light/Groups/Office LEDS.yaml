@@ -1,0 +1,5 @@
+platform: group
+name: Office LEDs
+entities:
+  - light.office_shelf_led
+  - light.office_desk_led

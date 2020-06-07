@@ -2,6 +2,7 @@
   "domain": "garbage_collection",
   "name": "Garbage Collection",
   "documentation": "https://github.com/bruxy70/Garbage-Collection/",
+  "issue_tracker": "https://github.com/bruxy70/Garbage-Collection/issues",
   "dependencies": [],
   "config_flow": true,
   "codeowners": [
@@ -15,6 +16,5 @@
     "typing",
     "uuid", 
     "voluptuous"
-  ],
-  "homeassistant": "0.96.0"
+  ]
 }

@@ -3,7 +3,7 @@ bridges:
     - host: !secret MilightBridgeIP
       groups:
       - number: 1
-        name: "Office Light"
+        name: "Toilet Light"
         type: rgbw
       - number: 2
         name: "Hallway Light"

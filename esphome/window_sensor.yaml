@@ -27,19 +27,19 @@ ota:
 binary_sensor:
   - platform: gpio
     pin: 
-      number: D1
+      number: D5
       mode: INPUT_PULLUP
     name: "Sam Bedroom Window"
     device_class: window
   - platform: gpio
     pin: 
-      number: D2
+      number: D6
       mode: INPUT_PULLUP
     name: "Lisa Bedroom Window"
     device_class: window
   - platform: gpio
     pin: 
-      number: D6
+      number: D7
       mode: INPUT_PULLUP
     name: "Office Window"
     device_class: window

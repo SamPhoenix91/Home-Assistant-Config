@@ -9,3 +9,14 @@
   - data:
       name: ios-dark-mode
     service: frontend.set_theme
+- id: '1590194805152'
+  alias: New Automation
+  description: ''
+  trigger:
+  - at: 05:00:00
+    platform: time
+  condition: []
+  action:
+  - data: {}
+    entity_id: fan.sam_fan
+    service: fan.turn_off

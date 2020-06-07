@@ -50,12 +50,12 @@ binary_sensor:
     internal: true
     name: "Light Switch"
     on_press:
-      - homeassistant.service:
-          service: light.toggle
-          data: 
-            entity_id: light.office_light
+    - homeassistant.service:
+        service: light.toggle
+        data: 
+          entity_id: light.office_light
     on_release:
-      - homeassistant.service:
-          service: light.toggle
-          data: 
-            entity_id: light.office_light
+    - homeassistant.service:
+        service: light.toggle
+        data: 
+          entity_id: light.office_light

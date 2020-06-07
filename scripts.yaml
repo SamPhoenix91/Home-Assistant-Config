@@ -49,19 +49,19 @@ officewledrainbow:
   sequence:
   - data:
       effect: Pride 2015
-    entity_id: light.office_wled
+    entity_id: light.office_leds
     service: light.turn_on
 officewledwhite:
   alias: OfficeWLED White
   sequence:
   - data:
       effect: Solid
-    entity_id: light.office_wled
+    entity_id: light.office_leds
     service: light.turn_on
 officewledtwinkle:
   alias: OfficeWLED Colortwinkles
   sequence:
   - data:
       effect: Colortwinkles
-    entity_id: light.office_wled
+    entity_id: light.office_leds
     service: light.turn_on
