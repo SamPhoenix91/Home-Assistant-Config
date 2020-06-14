@@ -26,6 +26,7 @@ components:
   spotify: !include ./Components/Other/Spotify.yaml
   browser_mod:
   proxmoxve: !include ./Components/Other/Proxmox.yaml
+  ios: !include ./Components/Other/iOS.yaml
 
   # Text to speech
   tts:

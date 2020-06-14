@@ -33,7 +33,7 @@ sensor:
     temperature: 
       name: Server Cupboard Temperature
       on_value_range:
-        - above: 30.0
+        - above: 31.0
           then:
             - switch.turn_on: fans
         - below: 30.0

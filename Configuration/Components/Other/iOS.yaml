@@ -1,0 +1,17 @@
+push:
+    categories:
+      - name: Shopping List
+        identifier: 'shopping_list'
+        actions:
+          - identifier: 'CLEAR_ITEM'
+            title: 'Clear Item'
+            activationMode: 'background'
+            authenticationRequired: false
+            destructive: false
+            behavior: 'default'
+          - identifier: 'CLEAR_ALL_ITEMS'
+            title: 'Clear All'
+            activationMode: 'background'
+            authenticationRequired: true
+            destructive: true
+            behavior: 'default'
