@@ -20,3 +20,14 @@
   - data: {}
     entity_id: fan.sam_fan
     service: fan.turn_off
+- id: '1592239027487'
+  alias: Front Door Motion
+  description: ''
+  trigger:
+  - platform: webhook
+    webhook_id: Front_Door_Motion
+  condition: []
+  action:
+  - data:
+      message: Motion Detected
+    service: notify.mobile_app_sams_iphone

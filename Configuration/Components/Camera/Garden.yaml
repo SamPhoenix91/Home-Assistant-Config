@@ -1,5 +1,5 @@
     platform: generic
     name: Garden
     stream_source: !secret GardenCameraIP
-    still_image_url: http://localhost:5555/picture/1/current/
+    still_image_url: http://localhost:5555/picture/2/current/
     #unique_id: Garden_Cam
