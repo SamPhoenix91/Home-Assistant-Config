@@ -1,0 +1,4 @@
+name: Camera_Notifs
+platform: file
+filename: CameraNotifs
+timestamp: true

@@ -29,5 +29,22 @@
   condition: []
   action:
   - data:
-      message: Motion Detected
+      message: Motion Detected - Front Door
+      data:
+        push:
+          sound: US-EN-Daisy-Front-Door-Motion.wav
+    service: notify.mobile_app_sams_iphone
+- id: '1592239027453'
+  alias: Garden Motion
+  description: ''
+  trigger:
+  - platform: webhook
+    webhook_id: Garden_Motion
+  condition: []
+  action:
+  - data:
+      message: Motion Detected - Garden
+      data:
+        push:
+          sound: US-EN-Daisy-Back-Door-Motion.wav
     service: notify.mobile_app_sams_iphone
