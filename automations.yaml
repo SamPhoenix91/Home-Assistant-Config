@@ -29,11 +29,14 @@
   condition: []
   action:
   - data:
-      message: Motion Detected - Front Door
       data:
         push:
           sound: US-EN-Daisy-Front-Door-Motion.wav
+      message: Motion Detected - Front Door
     service: notify.mobile_app_sams_iphone
+  - data:
+      message: Front Door
+    service: notify.camera_notifs
 - id: '1592239027453'
   alias: Garden Motion
   description: ''
@@ -43,8 +46,11 @@
   condition: []
   action:
   - data:
-      message: Motion Detected - Garden
       data:
         push:
           sound: US-EN-Daisy-Back-Door-Motion.wav
+      message: Motion Detected - Garden
     service: notify.mobile_app_sams_iphone
+  - data:
+      message: Garden
+    service: notify.camera_notifs
