@@ -40,5 +40,5 @@ components:
   script: !include ../scripts.yaml
   scene: !include ../scenes.yaml
   panel_iframe: !include ../iframe.yaml
-  frontend:
-    themes: !include_dir_merge_named ../themes/
+  #frontend:
+   # themes: !include_dir_merge_named ../themes/
