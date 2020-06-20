@@ -59,3 +59,8 @@ binary_sensor:
         service: light.toggle
         data: 
           entity_id: light.office_light
+          
+          
+          
+web_server:
+  port: 80

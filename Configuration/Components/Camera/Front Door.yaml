@@ -1,4 +1,4 @@
     platform: generic
     name: Front Door
     stream_source: !secret DoorCameraIP
-    still_image_url: http://localhost:5555/picture/1/current/
+    still_image_url: http://192.168.1.6:5555/picture/1/current/

@@ -15,3 +15,42 @@ push:
             authenticationRequired: true
             destructive: true
             behavior: 'default'
+      - name: Alarm Pending
+        identifier: 'alarm_pending'
+        actions:
+          - identifier: 'TRIGGER_ALARM'
+            title: 'Trigger'
+            activationMode: 'background'
+            authenticationRequired: true
+            destructive: true
+            behavior: 'default'
+          - identifier: 'CLEAR_ALARM'
+            title: 'Cancel Trigger'
+            activationMode: 'background'
+            authenticationRequired: false
+            destructive: true
+            behavior: 'default'
+      - name: Window Alert
+        identifier: 'alarm_pending'
+        actions:
+          - identifier: 'TRIGGER_ALARM'
+            title: 'Trigger'
+            activationMode: 'background'
+            authenticationRequired: true
+            destructive: true
+            behavior: 'default'
+          - identifier: 'CLEAR_ALARM'
+            title: 'Cancel Trigger'
+            activationMode: 'background'
+            authenticationRequired: false
+            destructive: true
+            behavior: 'default'
+      - name: Alarm Triggered
+        identifier: 'alarm_triggered'
+        actions:
+          - identifier: 'CANCEL_ALARM'
+            title: 'Cancel Alarm'
+            activationMode: 'background'
+            authenticationRequired: true
+            destructive: true
+            behavior: 'default'
