@@ -1,5 +1,9 @@
     platform: generic
     name: Garden
     stream_source: !secret GardenCameraIP
+<<<<<<< HEAD
     still_image_url: http://192.168.1.6:5555/picture/2/current/
+=======
+    still_image_url: !secret GardenCameraStill
+>>>>>>> da728e834805c3b06d287e328e0efda84f754bed
     #unique_id: Garden_Cam
