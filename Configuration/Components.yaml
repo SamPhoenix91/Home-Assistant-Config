@@ -7,7 +7,7 @@ components:
 # --------------------------------------------------------------------------------------------------------------------------------------------------------------------#
   #Integration folders
   climate: !include_dir_list ./Components/Thermostat/
-  camera:  !include_dir_list ./Components/Camera/
+  #camera:  !include_dir_list ./Components/Camera/
   binary_sensor: !include_dir_list ./Components/Binary Sensor/
   fan: !include_dir_list ./Components/Fan/
   sensor: !include_dir_list ./Components/Sensor/

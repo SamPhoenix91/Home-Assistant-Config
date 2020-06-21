@@ -1,0 +1,73 @@
+esphome:
+  name: stepper
+  platform: ESP8266
+  board: nodemcuv2
+
+# Enable Home Assistant API
+api:
+  password: !secret esp_home_api_ota
+  services:
+    - service: control_stepper
+      variables:
+        target: int
+      then:
+        - stepper.set_target:
+            id: my_stepper
+            target: !lambda 'return target;'
+ota:
+  password: !secret esp_home_api_ota
+
+captive_portal:
+
+# Enable logging
+logger:
+
+wifi:
+  ssid: !secret WifiSSID
+  password: !secret WifiPass
+
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Stepper Fallback Hotspot"
+    password: "ehO1JHSVXGHy"
+
+web_server:
+  port: 80 
+
+cover:
+  - platform: template
+    name: "stepper"
+    id: window_1_1
+
+    open_action:
+      - stepper.set_target:
+          id: my_stepper
+          target: 12000
+
+    close_action:
+      - stepper.set_target:
+          id: my_stepper
+          target: -100
+
+    stop_action:
+      - stepper.set_target:
+          id: my_stepper
+          target: !lambda return id(my_stepper).current_position;      
+
+    optimistic: true  
+
+stepper:
+  - platform: a4988
+    id: my_stepper
+    step_pin: D1
+    dir_pin: D2
+    max_speed: 250 steps/s
+
+    # Optional:
+    sleep_pin: D5
+    acceleration: inf
+    deceleration: inf
+
+
+    
