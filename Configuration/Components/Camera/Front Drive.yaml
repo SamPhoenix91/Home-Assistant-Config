@@ -1,4 +1,4 @@
     platform: generic
-    name: Front
+    name: Street
     stream_source: !secret FrontCameraIP
     still_image_url: !secret FrontCameraStill
