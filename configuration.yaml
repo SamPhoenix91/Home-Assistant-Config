@@ -6,6 +6,30 @@ http:
   use_x_forwarded_for: true
   trusted_proxies: 192.168.1.5
 
+
+recorder:
+  db_url: mysql://sam:f2b30637-f2fb-49f6-9844-d43f5dcb710d@core-mariadb/homeassistant?charset=utf8
+  purge_keep_days: 2
+  purge_interval: 1
+  include:
+    domains:
+      - sensor
+      - binary_sensor
+      - switch
+      - light
+      - fan
+      - climate
+  exclude:    # Eliminate anything that you never graph or refer back to
+    domains:
+      - automation
+      - updater
+      - weather
+    entities:
+      - sun.sun
+      - sensor.time
+      - sensor.7656fce3_d391cebd
+      - sensor.d2198b03_b33787a6
+
 # Integrations
 homeassistant:
   packages: !include ./Configuration/Components.yaml 

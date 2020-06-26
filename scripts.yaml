@@ -21,8 +21,6 @@ a8_preheat_pla:
   - data:
       temp: 185
     service: rest_command.octoprint_nozzle_temp
-
-
 kitchenwledrainbow:
   alias: KitchenWLED Rainbow
   sequence:
@@ -44,14 +42,16 @@ kitchenwledtwinkle:
       effect: Colortwinkles
     entity_id: light.kitchen_wled
     service: light.turn_on
-
-
 officewledrainbow:
   alias: OfficeWLED Rainbow
   sequence:
   - data:
       effect: Pride 2015
     entity_id: light.office_leds
+    service: light.turn_on
+  - data:
+      effect: Pride 2015
+    entity_id: light.office_shelf_letter
     service: light.turn_on
 officewledwhite:
   alias: OfficeWLED White
@@ -60,6 +60,10 @@ officewledwhite:
       effect: Solid
     entity_id: light.office_leds
     service: light.turn_on
+  - data:
+      effect: Solid
+    entity_id: light.office_shelf_letter
+    service: light.turn_on
 officewledtwinkle:
   alias: OfficeWLED Colortwinkles
   sequence:
@@ -67,57 +71,59 @@ officewledtwinkle:
       effect: Colortwinkles
     entity_id: light.office_leds
     service: light.turn_on
-
+  - data:
+      effect: Colortwinkles
+    entity_id: light.office_shelf_letter
+    service: light.turn_on
 sonos_doorbell:
-  alias: "Sonos doorbell script"
+  alias: Sonos doorbell script
   sequence:
-    - service: sonos.snapshot
-      data_template:
-        entity_id: "media_player.living_room_sonos"
-    - service: sonos.unjoin
-      data_template:
-        entity_id: "media_player.living_room_sonos"
-    - service: media_player.volume_set
-      data_template:
-        entity_id: "media_player.living_room_sonos"
-        volume_level: "0.7"
-    - service: media_player.play_media
-      data:
-        entity_id: "media_player.living_room_sonos"
-        media_content_id: https://samdserver.com/local/alexa_reminder.mp3
-        media_content_type: music
-    - delay: "00:00:02"
-    - service: media_player.volume_set
-      data_template:
-        entity_id: "media_player.living_room_sonos"
-        volume_level: "0.5"
-    - service: tts.google_translate_say
-      data_template:
-        entity_id: "media_player.living_room_sonos"
-        message: "Someone is at the door!"
-    - delay: "00:00:02"
-    - service: sonos.restore
-      data_template:
-        entity_id: "media_player.living_room_sonos"
-
+  - service: sonos.snapshot
+    data_template:
+      entity_id: media_player.living_room_sonos
+  - service: sonos.unjoin
+    data_template:
+      entity_id: media_player.living_room_sonos
+  - service: media_player.volume_set
+    data_template:
+      entity_id: media_player.living_room_sonos
+      volume_level: '0.7'
+  - service: media_player.play_media
+    data:
+      entity_id: media_player.living_room_sonos
+      media_content_id: https://samdserver.com/local/alexa_reminder.mp3
+      media_content_type: music
+  - delay: 00:00:02
+  - service: media_player.volume_set
+    data_template:
+      entity_id: media_player.living_room_sonos
+      volume_level: '0.5'
+  - service: tts.google_translate_say
+    data_template:
+      entity_id: media_player.living_room_sonos
+      message: Someone is at the door!
+  - delay: 00:00:02
+  - service: sonos.restore
+    data_template:
+      entity_id: media_player.living_room_sonos
 sonos_say:
-  alias: "Sonos TTS script"
+  alias: Sonos TTS script
   sequence:
-    - service: sonos.snapshot
-      data_template:
-        entity_id: "{{ sonos_entity }}"
-    - service: sonos.unjoin
-      data_template:
-        entity_id: "{{ sonos_entity }}"
-    - service: media_player.volume_set
-      data_template:
-        entity_id: "{{ sonos_entity }}"
-        volume_level: "{{ volume }}"
-    - service: tts.google_translate_say
-      data_template:
-        entity_id: "{{ sonos_entity }}"
-        message: "{{ message }}"
-    - delay: "{{ delay }}"
-    - service: sonos.restore
-      data_template:
-        entity_id: "{{ sonos_entity }}"
+  - service: sonos.snapshot
+    data_template:
+      entity_id: '{{ sonos_entity }}'
+  - service: sonos.unjoin
+    data_template:
+      entity_id: '{{ sonos_entity }}'
+  - service: media_player.volume_set
+    data_template:
+      entity_id: '{{ sonos_entity }}'
+      volume_level: '{{ volume }}'
+  - service: tts.google_translate_say
+    data_template:
+      entity_id: '{{ sonos_entity }}'
+      message: '{{ message }}'
+  - delay: '{{ delay }}'
+  - service: sonos.restore
+    data_template:
+      entity_id: '{{ sonos_entity }}'
