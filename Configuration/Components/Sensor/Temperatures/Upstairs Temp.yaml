@@ -1,0 +1,8 @@
+# Example configuration.yaml entry
+sensor:
+  - platform: min_max
+    name: Upstairs Temperature
+    type: mean
+    entity_ids:
+      - sensor.office_temperature
+    round_digits: 4
