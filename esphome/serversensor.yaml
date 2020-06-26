@@ -44,7 +44,25 @@ sensor:
     update_interval: 10s
     model: DHT22
     
-
+    
+binary_sensor:
+  - platform: gpio
+    pin: 
+      number: D5
+      mode: INPUT_PULLUP
+    name: "Server Cuboard Door"
+    device_class: door
+    on_press:
+    - homeassistant.service:
+        service: light.turn_on
+        data: 
+          entity_id: light.bridge
+    on_release:
+    - homeassistant.service:
+        service: light.turn_off
+        data: 
+          entity_id: light.bridge
+    
 switch:
   - platform: gpio
     id: fans
@@ -52,5 +70,6 @@ switch:
     pin: 
       number: D2
       inverted: yes
+    
 
  

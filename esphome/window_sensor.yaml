@@ -43,3 +43,15 @@ binary_sensor:
       mode: INPUT_PULLUP
     name: "Office Window"
     device_class: window
+    
+    
+    
+sensor:
+  - platform: dht
+    pin: D1
+    model: DHT22
+    temperature:
+      name: "Office Temperature"
+    humidity:
+      name: "Office Humidity"
+    update_interval: 20s
