@@ -1,4 +1,4 @@
 platform: generic_thermostat
 name: Home Thermostat
 heater: switch.fake_heater
-target_sensor: sensor.fake_sensor
+target_sensor: sensor.whole_house_temperature
