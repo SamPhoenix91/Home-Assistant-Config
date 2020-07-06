@@ -27,15 +27,31 @@ wifi:
 
 
 sensor:
+  - platform: homeassistant
+    name: "Upstairs Temp from Home Assistant"
+    entity_id: sensor.upstairs_temperature
+    id: upstairstemp
+  
   - platform: dht
     pin: D1
     id: tempSensor
     temperature: 
       name: Server Cupboard Temperature
       on_value_range:
-        - above: 31.0
+        - above: 35.6
           then:
-            - switch.turn_on: fans
+            - if:
+                condition:
+                  sensor.in_range:
+                    id: upstairstemp
+                    below: 26.5
+                then:
+                   - switch.turn_off: fans
+                else:
+                - homeassistant.service:
+                    service: notify.mobile_app_sams_iphone
+                    data: 
+                      message: It works
         - below: 30.0
           then:
             - switch.turn_off: fans
@@ -43,7 +59,7 @@ sensor:
       name: Server Cupboard Humidity
     update_interval: 10s
     model: DHT22
-    
+
     
 binary_sensor:
   - platform: gpio
