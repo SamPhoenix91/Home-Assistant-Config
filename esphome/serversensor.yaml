@@ -31,6 +31,7 @@ sensor:
     name: "Upstairs Temp from Home Assistant"
     entity_id: sensor.upstairs_temperature
     id: upstairstemp
+    internal: true
   
   - platform: dht
     pin: D1
@@ -44,14 +45,9 @@ sensor:
                 condition:
                   sensor.in_range:
                     id: upstairstemp
-                    below: 26.5
+                    below: 27
                 then:
                    - switch.turn_off: fans
-                else:
-                - homeassistant.service:
-                    service: notify.mobile_app_sams_iphone
-                    data: 
-                      message: It works
         - below: 30.0
           then:
             - switch.turn_off: fans
