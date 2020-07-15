@@ -1,0 +1,4 @@
+cctv:
+  title: CCTV
+  url: !secret CameraFeedURL
+  icon: mdi:cctv
