@@ -9,7 +9,7 @@ bridges:
         name: "Hallway Light"
         type: rgbw
       - number: 3
-        name: "Porch Light"
+        name: "Landing Light"
         type: rgbw
       - number: 1
         name: Bridge
