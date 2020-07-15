@@ -32,4 +32,4 @@ recorder:
 
 # Integrations
 homeassistant:
-  packages: !include ./Configuration/Components.yaml 
+  packages: !include ./Configuration/Components.yaml # All component configurations files are found here
