@@ -1,0 +1,13 @@
+platform: mqtt
+name: "Uni TV WLED"
+state_topic: "wled/TVAmbi"
+command_topic: "wled/TVAmbi"
+brightness_state_topic: "wled/TVAmbi/g"
+brightness_command_topic: "wled/TVAmbi"
+brightness_scale: 255
+rgb_state_topic: "wled/TVAmbi/c"
+rgb_command_topic: "wled/TVAmbi/col"
+qos: 0
+payload_on: "ON"
+payload_off: "OFF"
+optimistic: false
