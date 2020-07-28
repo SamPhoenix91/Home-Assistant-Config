@@ -127,3 +127,12 @@ sonos_say:
   - service: sonos.restore
     data_template:
       entity_id: '{{ sonos_entity }}'
+'1595811279884':
+  alias: Morning Routine
+  sequence:
+  - data: {}
+    entity_id: light.uni_tv_wled
+    service: light.turn_on
+  - data: {}
+    entity_id: light.sam_bedroom_light
+    service: light.turn_on
