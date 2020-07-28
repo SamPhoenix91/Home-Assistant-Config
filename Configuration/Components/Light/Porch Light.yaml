@@ -1,3 +1,5 @@
-platform: mqtt
+platform: group
 name: "Porch Light"
-command_topic: "PLACEHOLDER"
+entities:
+  - light.porch_top
+  - light.porch_bottom
