@@ -1,0 +1,14 @@
+platform: template
+lights: 
+  office_light:
+    friendly_name: Office
+    value_template: >
+      {% if is_state("input_boolean.office_main_switch", "on") -%}
+        {{ states("binary_sensor.office_light_power") }}
+      {%- else -%}
+        {{ states("binary_sensor.office_light_bulb") }}
+      {%- endif %}
+    turn_on:
+      service: script.office_light_toggle
+    turn_off:
+      service: script.office_light_toggle

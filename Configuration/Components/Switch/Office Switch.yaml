@@ -1,0 +1,5 @@
+platform: mqtt
+command_topic: "cmnd/OfficeSocket/POWER"
+state_topic: "stat/OfficeSocket/POWER"
+name: Office Sockets Hard Power
+icon: mdi:printer-3d

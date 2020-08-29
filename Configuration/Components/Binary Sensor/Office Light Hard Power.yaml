@@ -1,0 +1,3 @@
+platform: mqtt
+name: Office Light Power
+state_topic: "stat/OfficeSwitch/POWER"
