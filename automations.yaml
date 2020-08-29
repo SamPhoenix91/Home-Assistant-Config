@@ -9,63 +9,63 @@
   - data:
       name: ios-dark-mode
     service: frontend.set_theme
-- id: '1590194805152'
-  alias: New Automation
+- id: '1598730476786'
+  alias: Match S Bedroom aux lights to main light
   description: ''
   trigger:
-  - at: 05:00:00
-    platform: time
+  - payload: HOLD
+    platform: mqtt
+    topic: cmnd/AllBedroomLights/POWER
   condition: []
   action:
-  - data: {}
-    entity_id: fan.sam_fan
-    service: fan.turn_off
-- id: '1592239027487'
-  alias: Front Door Motion
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: light.sam_bedroom_light
+        state: 'off'
+      sequence:
+      - data: {}
+        entity_id: light.uni_tv_wled
+        service: light.turn_off
+    - conditions:
+      - condition: state
+        entity_id: light.sam_bedroom_light
+        state: 'on'
+      sequence:
+      - data: {}
+        entity_id: light.uni_tv_wled
+        service: light.turn_on
+    default: []
+  mode: single
+- id: '1598731005399'
+  alias: Toggle S Bedroom aux and main lights
   description: ''
   trigger:
-  - platform: webhook
-    webhook_id: Front_Door_Motion
+  - payload: TOGGLE
+    platform: mqtt
+    topic: cmnd/AllBedroomLights/POWER
   condition: []
   action:
-  - data:
-      data:
-        push:
-          sound: US-EN-Daisy-Front-Door-Motion.wav
-      message: Motion Detected - Front Door
-    service: notify.mobile_app_sams_iphone
-  - data:
-      message: Front Door
-    service: notify.camera_notifs
-- id: '1592239027453'
-  alias: Garden Motion
-  description: ''
-  trigger:
-  - platform: webhook
-    webhook_id: Garden_Motion
-  condition: []
-  action:
-  - data:
-      data:
-        push:
-          sound: US-EN-Daisy-Back-Door-Motion.wav
-      message: Motion Detected - Garden
-    service: notify.mobile_app_sams_iphone
-  - data:
-      message: Garden
-    service: notify.camera_notifs
-- id: '1592620161373'
-  alias: Turn on Garden light for motion
-  description: ''
-  trigger:
-  - platform: webhook
-    webhook_id: GardenLightOn
-  condition: []
-  action:
-  - data: {}
-    entity_id: light.garden_light
-    service: light.turn_on
-  - delay: 00:02:00
-  - data: {}
-    entity_id: light.garden_light
-    service: light.turn_off
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: light.sam_bedroom_light
+        state: 'on'
+      sequence:
+      - data:
+          entity_id:
+          - light.sam_bedroom_light
+          - light.uni_tv_wled
+        service: light.turn_off
+    - conditions:
+      - condition: state
+        entity_id: light.sam_bedroom_light
+        state: 'off'
+      sequence:
+      - data:
+          entity_id:
+          - light.sam_bedroom_light
+          - light.uni_tv_wled
+        service: light.turn_on
+    default: []
+  mode: single
